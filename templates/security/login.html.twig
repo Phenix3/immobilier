@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'forms.login.title' | trans %}
+
+{% block body %}
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img" style="background-image: url({{ asset('img/bg-img/hero1.jpg') }});">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h3 class="breadcumb-title">Login</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+
+    <section class="south-contact-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-heading">
+                        <h6></h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- Contact Form Area -->
+                <div class="col-12 col-lg-8 mx-auto">
+                    <div class="contact-form">
+                        <form action="" method="post">
+                            {% if errors %}
+                            <div class="alert alert-danger">
+                                <p class="lead">
+                                    {{ errors.messageKey | trans(errors.messageData, 'security') }}
+                                </p>
+                            </div>
+                            {% endif %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <div class="row form-group">
+                                <label for="_username">{{ 'login.email' | trans({}, 'forms') }}</label>
+                                <input type="email" class="form-control" name="_username" id="_username" value="{{ last_email }}">
+                            </div>
+                            <div class="row form-group">
+                                <label for="_password">{{ 'login.password' | trans({}, 'forms') }}</label>
+                                <input type="password" class="form-control" name="_password" id="_password">
+                            </div>
+                            <div class="row form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="_remember_me" id="_remember_me">
+                                    <label for="_remember_me" class="custom-control-label">{{ 'login.remember_me' | trans({}, 'forms') }}</label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn south-btn">
+                                <i class="fas fa-unlock"></i>
+                                {{ 'buttons.login' | trans }}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+
+
+

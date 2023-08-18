@@ -1,0 +1,2 @@
+thormeier_breadcrumb:
+  template: 'partials/_breadcrumb.html.twig'

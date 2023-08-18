@@ -1,0 +1,118 @@
+<div class="south-search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="advanced-search-form">
+                    <!-- Search Title -->
+                    <div class="search-title">
+                        <p>{{ 'forms.property_search.title.advanced_search_form' | trans }}</p>
+                    </div>
+                    <!-- Search Form -->
+                    {{ form_start(advancedSearchForm) }}
+                        <div class="row">
+
+                            <div class="col-12 col-md-4 col-lg-3">
+                                {{ form_row(advancedSearchForm.maxPrice) }}
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-3">
+                                {{ form_row(advancedSearchForm.minSurface) }}
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-3">
+                                {{ form_row(advancedSearchForm.tags) }}
+                            </div>
+
+                            <div class="col-12 col-md-4 col-lg-3">
+                                <div class="form-group">
+                                    <select class="form-control" id="offers">
+                                        <option>All Offers</option>
+                                        <option>100% OFF</option>
+                                        <option>75% OFF</option>
+                                        <option>50% OFF</option>
+                                        <option>25% OFF</option>
+                                        <option>10% OFF</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-xl-3">
+                                <div class="form-group">
+                                    <select class="form-control" id="listings">
+                                        <option>All Listings</option>
+                                        <option>Listings 1</option>
+                                        <option>Listings 2</option>
+                                        <option>Listings 3</option>
+                                        <option>Listings 4</option>
+                                        <option>Listings 5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-xl-2">
+                                <div class="form-group">
+                                    <select class="form-control" id="bedrooms">
+                                        <option>Bedrooms</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5+</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4 col-xl-2">
+                                <div class="form-group">
+                                    <select class="form-control" id="bathrooms">
+                                        <option>Bathrooms</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5+</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 d-flex justify-content-between align-items-end">
+                                <!-- More Filter -->
+
+                                <!-- Submit -->
+                                <div class="form-group mb-0">
+                                    <button type="submit" class="btn south-btn"><i class="fas fa-search fa-lg"></i> {{ 'buttons.search' | trans }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    {{ form_end(advancedSearchForm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="section-padding-50-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="listings-top-meta d-flex justify-content-between mb-100">
+                    <div class="view-area d-flex align-items-center">
+                        <span>View as:</span>
+                        <div class="grid_view ml-15"><a href="#" class="active"><i class="fa fa-th" aria-hidden="true"></i></a></div>
+                        <div class="list_view ml-15"><a href="#"><i class="fa fa-th-list" aria-hidden="true"></i></a></div>
+                    </div>
+                    <div class="order-by-area d-flex align-items-center">
+                        <span class="mr-15">Order by:</span>
+                        <select>
+                            <option selected>Default</option>
+                            <option value="1">Newest</option>
+                            <option value="2">Sales</option>
+                            <option value="3">Ratings</option>
+                            <option value="3">Popularity</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

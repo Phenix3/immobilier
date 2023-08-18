@@ -1,0 +1,6 @@
+{% for property in properties %}
+    <!-- Single Featured Property -->
+    <div class="col-12 col-md-6 col-xl-4">
+        {{ include('property/_property_box.html.twig', {property: property}) }}
+    </div>
+{% endfor %}

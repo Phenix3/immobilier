@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag index{% endblock %}
+
+{% block body %}
+    <h1>Tag index</h1>
+<div class="container mt-4">
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            <button data-dismiss="alert" aria-hidden="true" aria-label="Close" class="close">&times;</button>
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+
+    <table class="table table-bordered table-hover">
+        <thead class="text-white bg-warning">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            <tr>
+                <td>{{ tag.id }}</td>
+                <td>{{ tag.name }}</td>
+                <td>
+                    <a href="{{ path('tag_edit', {'id': tag.id}) }}" class="btn btn-warning">edit</a>
+                    {{ include('admin/tag/_delete_form.html.twig', {tag: tag}) }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tag_new') }}">Create new</a>
+</div>
+
+{% endblock %}

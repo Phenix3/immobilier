@@ -1,0 +1,63 @@
+{% extends 'admin.html.twig' %}
+
+{% block title property.name %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <h1>{{ property.name }}</h1>
+                    <h2>{{ property.rooms }} piéces {{ property.surface }} m<sup>2</sup></h2>
+                    <h1 class="text-primary font-weight-bold">{{ property.formattedPrice }} Fcfa</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h4 class="my-4">Une petite description</h4>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table table-striped">
+                    <tr>
+                        <th colspan="2">
+                            <h2>Caractéristiques</h2>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>Surface habitable</td>
+                        <td>{{ property.surface }} m<sup>2</sup></td>
+                    </tr>
+                    <tr>
+                        <td>Pièces</td>
+                        <td>{{ property.rooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chambres</td>
+                        <td>{{ property.bedrooms }}</td>
+                    </tr>
+                    <tr>
+                        <td>Etage</td>
+                        <td>{{ property.floor }}</td>
+                    </tr>
+                    <tr>
+                        <td>Chauffage</td>
+                        <td>{{ property.HEAT }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <h2>Spécificités</h2>
+                <ul class="list-group">
+                    {% for tag in property.tags %}
+                        <li class="list-group-item">{{ tag.name }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {{ encore_entry_link_tags('global') }}
+    {{ encore_entry_link_tags('admin') }}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+{{ include('admin/partials/header.html.twig') }}
+
+<div class="app-body">
+    {{ include('admin/partials/sidebar.html.twig') }}
+    <main class="main">
+        {{ breadcrumbs() }}
+        <div class="container-fluid">
+            {% block body %}
+                {{ include('partials/flash.html.twig') }}
+            {% endblock %}
+        </div>
+    </main>
+    {{ include('admin/partials/aside_menu.html.twig') }}
+</div>
+
+{{ encore_entry_script_tags('global') }}
+{{ encore_entry_script_tags('admin') }}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

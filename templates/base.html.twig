@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %} | {{ ibi_site_title }}</title>
+        {{ include('partials/css.html.twig') }}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="south-load"></div>
+    </div>
+        <header>
+            {{ render(controller('App\\Controller\\HomeController::getNav')) }}
+        </header>
+        {{ include('partials/flash.html.twig') }}
+        {% block body %}
+        {% endblock %}
+
+        {{ include('partials/footer.html.twig') }}
+        {{ include('partials/js.html.twig') }}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

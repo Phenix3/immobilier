@@ -1,0 +1,8 @@
+api_platform:
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    title: PhoenixAPI
+    version: 1.0.0
+
+    eager_loading:
+        max_joins: 30

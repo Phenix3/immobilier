@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="nav-icon fas fa-meteor"></i> Dashboard
+                    <span class="badge badge-primary">NEW</span>
+                </a>
+            </li>
+            <li class="nav-title">Theme</li>
+            <li class="nav-item {{ active_class('admin_property_index') }}">
+                <a class="nav-link" href="{{ path('admin_property_index') }}">
+                    <i class="nav-icon fas fa-boxes"></i> Properties</a>
+            </li>
+            <li class="nav-item {{ active_class('admin_category_index') }}">
+                <a class="nav-link" href="{{ path('admin_category_index') }}">
+                    <i class="nav-icon fas fa-boxes"></i> Categories</a>
+            </li>
+            <li class="nav-item {{ active_class('admin_type_index') }}">
+                <a class="nav-link" href="{{ path('admin_type_index') }}">
+                    <i class="nav-icon fas fa-tags"></i> Type</a>
+            </li
+            
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>

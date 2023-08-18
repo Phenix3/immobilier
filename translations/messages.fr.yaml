@@ -1,0 +1,83 @@
+labels:
+  contact: Contact
+  owner: Propriétaire
+  front:
+    register:
+      register_info: Informations d'enregistrement
+      agree_licence: En cochant cette case, j’affirme avoir pris connaissance que mes données seront enregistrées et consultables par les équipes de %site_name% pour le support et que je peux exercer mon droit de consultation ou suppression des données en contactant %site_name% via les informations disponibles depuis les mentions légales.
+      register: Enregistrement
+    home:
+      call_to_action:
+        title: Chercher vous un endroit a louer ?
+        description: Are you looking for a place to rent?
+      testimonials:
+        title: Temoignages de nos clients
+        subtitle: Suspendisse dictum enim sit amet libero malesuada feugiat.
+
+forms:
+  property:
+    city: Ville
+    rooms: Piéces
+    bedrooms: Chambres
+    floor: Etage
+    price: Prix
+    address: Adresse
+    postal_code: Code Postal
+    heat: Chauffage
+    sold: Vendu ?
+    description: Déscription
+    username: Nom d'utilisateur
+    password: Mot de passe
+    confirm_password: Confirmation de mot de passe
+    email: Adresse E-mail
+    phone: Numero de telephone
+    name: Titre de votre annonce
+    category: La catégorie de votre bien
+    type: Le type de votre bien
+    tags: Les étiquetes ( spécificités ) de votre bien
+    surface: La surface de votre bien
+    image_file: Image d'illustration du bien
+    electrique: Chauffage éléctrique
+    gaz: Chauffage a gaz
+    is_published: Publié ?
+
+  contact:
+    name: Votre nom
+    email: Votre E-mail
+    phone: Votre numero de telephone
+    message: Votre message
+    subject: Le sujet de votre message
+
+  login:
+    title: Connexion
+    email: Votre adresse E-mail
+    password: Votre mot de passe
+    remember_me: Se souvenir de moi
+
+  property_search:
+    search: Réchercher
+    placeholder:
+      min_surface: Surface minimale
+      max_price: Prix maximum
+      tags: Etiquetes
+    title:
+      advanced_search_form: Chercher votre maison ideale
+
+buttons:
+  login: Connexion
+  search: Rechercher
+  send: Envoyer
+
+menu:
+  home: Accueil
+  sale: Vente
+  purshase: Achat
+  tenancy: Location
+  contact: Contact
+
+alerts:
+  property_added: Votre proprieté a bien été enregistré, mais doit etre validé par nos équipes avant publication.
+
+
+strings:
+  property_surface: Surface de la propriété.

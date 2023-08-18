@@ -1,0 +1,13 @@
+/*@import "./variables-sketchy";
+@import "./bootswatch-sketchy";
+@import "~bootstrap/scss/bootstrap";*/
+
+// Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+@import "tools/animations";
+@import "modules/alert";
+@import "./../css/plugins/nouislider.css";

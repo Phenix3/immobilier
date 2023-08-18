@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Edition de ' ~ property.name %}
+
+
+{% block body %}
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                {{ include ('admin/property/_property_form.html.twig', {form: form, button: "Editer"}) }}
+            </div>
+            <div class="col-md-4">
+                {{ render(controller('App\\Controller\\ImageController::form')) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/dropzone.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/dropzone.js') }}"></script>
+    {{ include('admin/property/_dropzone_script.html.twig') }}
+{% endblock %}
+
+
+

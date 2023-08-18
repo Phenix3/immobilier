@@ -1,0 +1,93 @@
+easy_admin:
+    site_name: 'PhoenixDev Admin'
+    user:
+        display_name: true
+        display_avatar: true
+        name_property_path: 'username'
+        avatar_property_path: 'imageName'
+    design:
+        brand_color: '#1ABC9C'
+        assets:
+            js:
+                # - 'bundles/fosckeditor/ckeditor.js'
+        form_theme:
+            - '@EasyAdmin/form/bootstrap_4.html.twig'
+            - '@VichUploader/Form/fields.html.twig'
+            - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+    list:
+        actions: ['show', 'edit', 'delete']
+
+    entities:
+#        # List the entity class name you want to manage
+        Property:
+            class: App\Entity\Property
+            form:
+                fields:
+                    - { type: 'tab', label: 'Base information' }
+                    - {property: 'name', type: 'text', label: 'Property Name', css_class: 'input-large', icon: 'home'}
+                    - {property: 'surface', type: 'number'}
+                    - {property: 'rooms', type: 'number'}
+                    - {property: 'bedrooms', type: 'number'}
+                    - {property: 'floor', type: 'number'}
+                    - {property: 'price', type: 'number'}
+                    - {property: 'postalCode', type: 'number'}
+                    - {property: 'isPublished', type: 'checkbox', type_options: {required: false}}
+                    - {property: 'sold', type: 'checkbox'}
+                    - {property: 'tags', type_options: {class: 'App\Entity\Tag', choice_label: 'name', multiple: true, required: false}}
+                    - { type: 'tab', label: 'Location' }
+                    - {property: 'city', type: 'text'}
+                    - {property: 'address', type: 'text'}
+                    - {property: 'heat', type: 'choice', type_options: { choices: {Electric: 1, Chauffage: 2} }}
+                    - {property: 'type', type_options: { class: 'App\Entity\Type', choice_label: 'name', required: true } }
+                    - {property: 'proprietary', label: 'Proprietaire', type_options: { class: 'App\Entity\User', choice_label: 'username', required: true } }
+                    - {property: 'imageFile', type: 'vich_image'}
+                    - {property: 'images', type: 'collection', type_options: {entry_options: {label: true}, entry_type: 'App\Form\ImageType', allow_add: true, allow_delete: true, required: false }}
+                    - {type: 'tab', label: 'Description'}
+                    - {property: 'description', type: 'fos_ckeditor' }
+
+            show:
+                fields: 
+                    - name
+                    - {property: 'image', type: 'image', base_path: '%app.path.product_images%'}
+                    - surface
+                    - address
+                    - proprietary.username
+                    - type.name
+                    - sold
+                    - postalCode
+                    - price
+                    - rooms
+                    - bedrooms
+                    - floor
+                    - city
+                    - description
+            list:
+                fields:
+                    - {property: 'image', type: 'image', base_path: '%app.path.product_images%'}
+                    - name
+                    - surface
+                    - rooms
+                    - bedrooms
+                    - floor
+
+        User:
+            class: App\Entity\User
+
+        Image:
+            class: App\Entity\Image
+            form:
+                fields:
+                    - {property: 'imageFile', type: 'vich_image'}
+                    - {property: 'alt', type: 'text'}
+                    - {property: 'property', type_options: {class: 'App\Entity\Property', choice_label: 'name'}}
+
+        Setting:
+            class: App\Entity\Setting
+            form:
+                fields:
+                    - name
+                    - value
+
+            list:
+                action: ['show', 'edit', 'delete']

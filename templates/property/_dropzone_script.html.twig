@@ -1,0 +1,48 @@
+<script>
+    (function ($) {
+        Dropzone.options.myDropzone = {
+            uploadMultiple: true,
+            parallelUploads: 3,
+            maxFilesize: 3,
+            maxFiles: 3,
+            dictMaxFilesExceeded: "Vous ne pouvez charger que 3 photos a la fois",
+            previewTemplate: document.querySelector('#preview').innerHTML,
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*',
+            dictInvalidFileType: "Type de fichier non valide",
+            dictRemoveFile: "Supprimer",
+            dictFileTooBig: "Ce fichier est trop lourd (3 Mo)",
+            timeout: 10000,
+            init() {
+                const myDropzone = this;
+                $.get('{{ path('image_server') }}', data => {
+                    $.each(data.images, (key, value) => {
+                        const mockFile = {
+                            name: value.original,
+                            size: value.size,
+                            dataURL: '{{ url('home') }}' + '/images/properties/' + value.server
+                        };
+                        myDropzone.files.push(mockFile);
+                        myDropzone.emit('addedfile', mockFile);
+                        myDropzone.createThumbnailFromUrl(mockFile,
+                            myDropzone.options.thumbnailWidth,
+                            myDropzone.options.thumbnailHeight,
+                            myDropzone.options.thumbnailMethod,
+                            true,
+                            (thumbnail) => {
+                                myDropzone.emit('thumbnail', mockFile, thumbnail);
+                            });
+                        myDropzone.emit('complete', mockFile);
+                    });
+                });
+                this.on('removedfile', file => {
+                    $.ajax({
+                        method: 'delete',
+                        url: '{{ path('image_delete') }}',
+                        data: {name: file.name}
+                    });
+                });
+            }
+        }
+    })(jQuery);
+</script>

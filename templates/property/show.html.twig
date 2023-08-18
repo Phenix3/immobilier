@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title property.name %}
+
+
+{% block body %}
+
+{% if property.imageName %}
+    {% set heroImageUrl = vich_uploader_asset(property, 'imageFile') | imagine_filter('medium')%}
+{% else %}
+    {% set heroImageUrl = asset('images/properties/empty.jpg') | imagine_filter('medium')%}
+{% endif %}
+    <!-- ##### Breadcumb Area Start ##### -->
+        <section class="breadcumb-area bg-img"
+                 style="background-image: url({{ heroImageUrl }});"
+        >
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h5 class="breadcumb-title">{{ property.name }}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Listings Content Area Start ##### -->
+    <section class="listings-content-wrapper section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Single Listings Slides -->
+                    <div class="single-listings-sliders owl-carousel">
+                        <!-- Single Slide -->
+                        {% if property.imageName %}
+                            {% if property.images | length > 0 %}
+                                <img src="{{ heroImageUrl }}" alt="{{ property.name }}">
+                                {% for image in property.images %}
+                                    <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('medium') }}" alt="{{ image.alt }}">
+                                {% endfor %}
+                            {% else %}
+                                <img src="{{ heroImageUrl }}" alt="{{ property.name }}">
+                            {% endif %}
+                        {% else %}
+                            <img src="{{ heroImageUrl }}" alt="{{ property.name }}">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="listings-content">
+                        <!-- Price -->
+                        <div class="list-price">
+                            <h3 class="text-default">{{ property.price | localizedcurrency('XAF') }}</h3>
+                        </div>
+                        <h1>{{ property.name }}</h1>
+                        <h3 class="location"><img src="{{ asset('img/icons/location.png') }}" alt="">{{ property.address }}</h3>
+                        <p>{{ property.description | raw }}</p>
+                        <!-- Meta -->
+                        <div class="property-meta-data d-flex align-items-end">
+                            <div class="new-tag">
+                                <img src="{{ asset('img/icons/new.png') }}" alt="">
+                            </div>
+                            <div class="bathroom">
+                                <img src="{{ asset('img/icons/bathtub.png') }}" alt="">
+                                <span>{{ property.bedrooms }}</span>
+                            </div>
+                            <div class="garage">
+                                <img src="{{ asset('img/icons/garage.png') }}" alt="">
+                                <span>{{ property.rooms }}</span>
+                            </div>
+                            <div class="space">
+                                <img src="{{ asset('img/icons/space.png') }}" alt="">
+                                <span>{{ property.surface }} m<sup>2</sup></span>
+                            </div>
+                        </div>
+                        <!-- Core Features -->
+                        <ul class="listings-core-features d-flex align-items-center">
+                            {% for tag in property.tags %}
+                                <li><i class="fa fa-check" aria-hidden="true"></i>{{ tag.name }}</li>
+                            {% endfor %}
+                        </ul>
+                        <!-- Listings Btn Groups -->
+                        <div class="listings-btn-groups">
+                            <a href="#" class="btn south-btn">See Floor plans</a>
+                            <a href="#" class="btn south-btn active">calculate mortgage</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="contact-realtor-wrapper">
+                        <div class="realtor-info">
+                            <img src="{{ asset('img/bg-img/listing.jpg') }}" alt="">
+                            <div class="realtor---info">
+                                <h2>{{ property.proprietary.username }}</h2>
+                                <p>{{ 'labels.owner' | trans }}</p>
+                                <h6><img src="{{ asset('img/icons/phone-call.png') }}" alt=""> +45 677 8993000 223</h6>
+                                <h6><img src="{{ asset('img/icons/envelope.png') }}" alt="">{{ property.proprietary.email }}</h6>
+                            </div>
+                            <div class="realtor--contact-form">
+                                {{ form_start(formContact) }}
+                                <div class="row">
+                                    <div class="col-12 col-md-6">{{ form_row(formContact.name) }}</div>
+                                    <div class="col-12 col-md-6">{{ form_row(formContact.email) }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">{{ form_row(formContact.subject) }}</div>
+                                    <div class="col-12 col-md-6">{{ form_row(formContact.phone) }}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">{{ form_row(formContact.content) }}</div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-sm south-btn">
+                                        <i class="fas fa-paper-plane"></i>
+                                        Envoyer
+                                    </button>
+                                </div>
+                                {{ form_end(formContact) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Listing Maps -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="listings-maps mt-100">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Listings Content Area End ##### -->
+
+{% endblock %}
+
+

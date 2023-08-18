@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Nos Biens' %}
+
+{% block body %}
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img" style="background-image: url('{{ asset('img/bg-img/hero1.jpg') }}');">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h3 class="breadcumb-title">Listings</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ##### Advance Search Area Start ##### -->
+
+    {#{{ render(controller('App\\Controller\\PropertyController::getAdvancedSearchForm')) }}#}
+    <section class="listings-content-wrapper section-padding-100">
+        <div class="container js-filter">
+            {# <div class="row">
+                <div class="col-12">
+                    <div class="listings-top-meta d-flex justify-content-between mb-100">
+                        <div class="view-area d-flex align-items-center">
+                            <span>View as:</span>
+                            <div class="grid_view ml-15"><a href="#" class="active"><i class="fa fa-th" aria-hidden="true"></i></a></div>
+                            <div class="list_view ml-15"><a href="#"><i class="fa fa-th-list" aria-hidden="true"></i></a></div>
+                        </div>
+                        <div class="order-by-area d-flex align-items-center">
+                            <span class="mr-15">Order by:</span>
+                            <select>
+                                <option selected>Default</option>
+                                <option value="1">Newest</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Ratings</option>
+                                <option value="3">Popularity</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div> #}
+
+            <div class="row d-flex justify-content-end mb-3 js-filter-sorting">
+                {% include 'property/_sorting.html.twig' with {properties: properties} only %}
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body">
+                            {% include 'property/_search_form_data.html.twig' with {form: form, min: min, max: max} only %}
+                        </div>
+                    </div>
+                </div>
+
+               <div class="col-md-9" >
+                    <div class="row js-filter-content">
+                        {% include 'property/_properties.html.twig' with {properties: properties} only %}
+                    </div>
+               </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="south-pagination d-flex justify-content-end">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination js-filter-pagination">
+                                {% include 'property/_pagination.html.twig' with {properties: properties} only %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Listing Content Wrapper Area End ##### -->
+
+    {#<div class="container">
+        <div class="row">
+            <div class="col-md-4 mx-auto ">
+                <div class="pagination">
+                    {{ knp_pagination_render(properties) }}
+                </div>
+            </div>
+        </div>
+    </div>#}
+{% endblock %}
+
+{% block stylesheets %}
+{{ encore_entry_link_tags('form') }}
+{% endblock %}
+
+{% block javascripts %}
+{{ encore_entry_script_tags('form') }}
+{% endblock %}

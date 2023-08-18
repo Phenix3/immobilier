@@ -1,0 +1,42 @@
+City: Ville
+Rooms: Piéces
+Bedrooms: Chambres
+Floor: Etage
+Price: Prix
+Address: Adresse
+Postal code: Code Postal
+Heat: Chauffage
+Sold: Vendu ?
+Description: Déscription
+Username: Nom d'utilisateur
+Password: Mot de passe
+Confirm password: Confirmation de mot de passe
+Email: Adresse E-mail
+phone: Numero de telephone
+Name: Titre de votre annonce
+Category: La catégorie de votre bien
+Type: Le type de votre bien
+Tags: Les étiquetes ( spécificités ) de votre bien
+Surface: La surface de votre bien
+ImageFile: Image d'illustration du bien
+Electrique: Chauffage éléctrique
+Gaz: Chauffage a gaz
+
+contact:
+  name: Votre nom
+  email: Votre E-mail
+  phone: Votre numero de telephone
+  message: Votre message
+  subject: Le sujet de votre message
+
+login:
+  title: Connexion
+  email: Votre adresse E-mail
+  password: Votre mot de passe
+  remember_me: Se souvenir de moi
+
+property_search:
+  placeholder:
+    min_surface: Surface minimale
+    max_price: Prix maximum
+    tags: Etiquetes

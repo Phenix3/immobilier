@@ -1,0 +1,42 @@
+<div class="single-featured-property mb-50">
+    <!-- Property Thumbnail -->
+    <div class="property-thumb">
+        {% if property.imageName %}
+            <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('thumb') }}" alt="{{ property.name }}">
+        {% else %}
+            <img src="{{ asset('images/properties/empty.jpg') | imagine_filter('thumb') }}" alt="{{ property.name }}">
+        {% endif %}
+
+        <div class="tag">
+            <span>{{ property.category.name }}</span>
+        </div>
+        <div class="list-price">
+            <p>{{ property.price | localizedcurrency('XAF') }}</p>
+        </div>
+    </div>
+    <!-- Property Content -->
+    <div class="property-content">
+        <h4><a href="{{ path('property_show', {id: property.id, slug: property.slug}) }}" class="text-dark">{{ property.name }}</a></h4>
+        <p class="location"><img src="{{ asset('img/icons/location.png') }}" alt="">{{ property.address }}</p>
+        <p>{{ property.description | truncate(100) | raw }}</p>
+        <div class="property-meta-data d-flex align-items-end justify-content-between">
+            {# <div class="new-tag">
+                <img src="{{ asset('img/icons/new.png') }}" alt="">
+            </div> #}
+            <div class="bathroom">
+                <img src="{{ asset('img/icons/bathtub.png') }}" alt="">
+                <span>{{ property.bedrooms }}</span>
+            </div>
+            <div class="garage">
+                <img src="{{ asset('img/icons/garage.png') }}" alt="">
+                <span>{{ property.rooms }}</span>
+            </div>
+            <div class="space">
+                <span  data-toggle="tooltip" title="{{ 'strings.property_surface'|trans }}">
+                    <img src="{{ asset('img/icons/space.png') }}" alt="{{ 'strings.property_surface'|trans }}">
+                </span>
+                <span>{{ property.surface }}</span>
+            </div>
+        </div>
+    </div>
+</div>
